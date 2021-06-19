@@ -1,6 +1,6 @@
 ---
 title: 'About Me'
-avatar: './me.jpg'
+avatar: './harshith.jpeg'
 skills:
   - JavaScript (ES6+)
   - HTML & (S)CSS
@@ -9,9 +9,10 @@ skills:
   - Express
   - Django
   - Sass
+  - Typescript
 ---
 
-Hello! I'm Harshith Pabbati, a sophomore at Amrita University.
+Hello! I'm Harshith Pabbati, a student at Amrita University.
 
 I enjoy creating things that live on the internet, whether that be websites, applications, or anything in between. My goal is to always build products that provide pixel-perfect, performant experiences.
 
