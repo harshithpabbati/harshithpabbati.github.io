@@ -2,9 +2,9 @@ module.exports = {
   siteTitle: 'Harshith Pabbati',
   siteDescription:
     'A Fullstack Web Developer, and a team player dedicated in building and optimizing the performance of user-centric, high-impact websites with 2 years of experience in designing and developing user interfaces, testing, debugging.',
-  siteUrl: 'https://harshithpabbati.github.io',
+  siteUrl: 'https://harshithpabbati.com',
   siteLanguage: 'en_US',
-  googleAnalyticsID: '',
+  googleAnalyticsID: 'UA-151635018-1',
   name: 'Harshith Pabbati',
   location: 'Kerela, India',
   email: 'pabbatiharshith@gmail.com',
