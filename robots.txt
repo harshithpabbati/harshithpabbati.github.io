@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://harshithpabbati.github.io/sitemap.xml
-Host: https://harshithpabbati.github.io
+Sitemap: https://harshithpabbati.com/sitemap.xml
+Host: https://harshithpabbati.com
