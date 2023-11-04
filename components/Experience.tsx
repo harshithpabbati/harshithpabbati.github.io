@@ -35,7 +35,7 @@ const experience = [
     title: "Fullstack Developer",
     company: {
       name: "Tayfa",
-      url: "https://tayfa.com",
+      url: "https://usetayfa.com/",
     },
     fromDate: "Nov 2020",
     toDate: "Dec 2020",
