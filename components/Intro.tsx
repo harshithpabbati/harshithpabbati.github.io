@@ -13,7 +13,7 @@ export function Intro() {
 
       <p className="prose prose-neutral dark:prose-invert">
         A full-stack engineer building scalable, performant, and intuitive web
-        apps. With over 5 years of experience in designing, developing, and
+        apps. With over 3 years of experience in designing, developing, and
         deploying web applications in NextJS, ReactJS, Django, GraphQL, Node,
         and Express, I enjoy both the complexity of solving hard problems and
         the simplicity of building clean interfaces.
