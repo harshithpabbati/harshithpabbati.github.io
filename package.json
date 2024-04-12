@@ -8,6 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@openpanel/nextjs": "0.0.8-beta",
     "@vercel/analytics": "^1.1.1",
     "clsx": "^2.0.0",
     "geist": "^1.0.0",
