@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const links = [
   {
     name: "Email",
@@ -25,9 +27,9 @@ export function Links() {
   return (
     <section className="prose prose-neutral dark:prose-invert items-center flex gap-2">
       {links.map((link) => (
-        <a key={link.name} href={link.url}>
+        <Link target="_blank" key={link.name} href={link.url}>
           {link.name}
-        </a>
+        </Link>
       ))}
     </section>
   );
