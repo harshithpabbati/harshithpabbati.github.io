@@ -8,13 +8,13 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@openpanel/nextjs": "0.0.8-beta",
+    "@openpanel/nextjs": "0.0.10-beta",
     "@vercel/analytics": "^1.1.1",
     "clsx": "^2.0.0",
     "geist": "^1.0.0",
-    "next": "^14.0.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "next": "^14.2.4",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^14.0.1",
