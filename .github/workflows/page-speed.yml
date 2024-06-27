@@ -1,0 +1,76 @@
+name: PageSpeed Insights on Vercel Preview
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  wait-for-vercel:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for Vercel Preview
+        uses: patrickedqvist/wait-for-vercel-preview@v1.3.1
+        id: waitFor200
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          max_timeout: 300
+          check_interval: 5
+
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Bundle Size Analysis
+        uses: jackyef/bundlewatch-gh-action@master
+        with:
+          build-script: echo "Build step already run. Skipping..."
+          bundlewatch-github-token: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
+
+      - name: Run PageSpeed Insights - Mobile
+        uses: jakepartusch/psi-action@v1
+        id: psi-mobile
+        with:
+          url: ${{ steps.waitFor200.outputs.url }}
+          threshold: 70
+          strategy: mobile
+
+      - name: Run PageSpeed Insights - Desktop
+        uses: jakepartusch/psi-action@v1
+        id: psi-desktop
+        with:
+          url: ${{ steps.waitFor200.outputs.url }}
+          threshold: 80
+          strategy: desktop
+
+      - name: Comment PR
+        uses: actions/github-script@v6
+        if: success()
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.name,
+              body: `## PageSpeed Insights Results for ${{ steps.waitFor200.outputs.url }}
+              
+              ### Mobile
+              Score: ${{ steps.psi-mobile.outputs.score }}
+              [Full Report](${{ steps.psi-mobile.outputs.report_url }})
+              
+              ### Desktop
+              Score: ${{ steps.psi-desktop.outputs.score }}
+              [Full Report](${{ steps.psi-desktop.outputs.report_url }})
+              
+              ### Bundle Size Analysis
+              Check the Bundle Size Analysis results in the Actions tab.
+              
+              [View deployed preview](${{ steps.waitFor200.outputs.url }})
+              `
+            });
