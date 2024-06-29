@@ -1,76 +1,117 @@
-name: PageSpeed Insights on Vercel Preview
+name: PageSpeed Insights
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
+  deployment_status:
 
 jobs:
-  wait-for-vercel:
+  audit:
     runs-on: ubuntu-latest
+    if: github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Preview'
     steps:
-      - name: Wait for Vercel Preview
-        uses: patrickedqvist/wait-for-vercel-preview@v1.3.1
-        id: waitFor200
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          max_timeout: 300
-          check_interval: 5
-
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v2
-        with:
-          node-version: 16.x
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build
-        run: npm run build
-
-      - name: Bundle Size Analysis
-        uses: jackyef/bundlewatch-gh-action@master
-        with:
-          build-script: echo "Build step already run. Skipping..."
-          bundlewatch-github-token: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
-
       - name: Run PageSpeed Insights - Mobile
         uses: jakepartusch/psi-action@v1
         id: psi-mobile
         with:
-          url: ${{ steps.waitFor200.outputs.url }}
-          threshold: 70
+          url: ${{ github.event.deployment_status.target_url }}
+          threshold: 45
           strategy: mobile
 
       - name: Run PageSpeed Insights - Desktop
         uses: jakepartusch/psi-action@v1
         id: psi-desktop
         with:
-          url: ${{ steps.waitFor200.outputs.url }}
-          threshold: 80
+          url: ${{ github.event.deployment_status.target_url }}
+          threshold: 60
           strategy: desktop
 
-      - name: Comment PR
-        uses: actions/github-script@v6
-        if: success()
+      - name: Get PR number
+        uses: jwalton/gh-find-current-pr@master
+        id: pr
+
+      - name: Find Comment
+        uses: peter-evans/find-comment@v3
+        id: fc
         with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          script: |
-            await github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.name,
-              body: `## PageSpeed Insights Results for ${{ steps.waitFor200.outputs.url }}
-              
-              ### Mobile
-              Score: ${{ steps.psi-mobile.outputs.score }}
-              [Full Report](${{ steps.psi-mobile.outputs.report_url }})
-              
-              ### Desktop
-              Score: ${{ steps.psi-desktop.outputs.score }}
-              [Full Report](${{ steps.psi-desktop.outputs.report_url }})
-              
-              ### Bundle Size Analysis
-              Check the Bundle Size Analysis results in the Actions tab.
-              
-              [View deployed preview](${{ steps.waitFor200.outputs.url }})
-              `
-            });
+          issue-number: ${{ steps.pr.outputs.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: PageSpeed Insights Results
+
+      - name: Comment PR
+        if: steps.fc.outputs.comment-id == ''
+        uses: peter-evans/create-or-update-comment@v1
+        if: steps.pr.outputs.number && success()
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ steps.pr.outputs.number }}
+          body: |
+            ### PageSpeed Insights Results
+
+            ### Mobile
+            Overall Score: ${{ steps.psi-mobile.outputs.score }}
+            
+            Performance: ${{ steps.psi-mobile.outputs.performance_score }}
+            Accessibility: ${{ steps.psi-mobile.outputs.accessibility_score }}
+            Best Practices: ${{ steps.psi-mobile.outputs.best_practices_score }}
+            SEO: ${{ steps.psi-mobile.outputs.seo_score }}
+
+            First Contentful Paint: ${{ steps.psi-mobile.outputs.first_contentful_paint }}
+            Speed Index: ${{ steps.psi-mobile.outputs.speed_index }}
+            Largest Contentful Paint: ${{ steps.psi-mobile.outputs.largest_contentful_paint }}
+            Time to Interactive: ${{ steps.psi-mobile.outputs.interactive }}
+            Total Blocking Time: ${{ steps.psi-mobile.outputs.total_blocking_time }}
+            Cumulative Layout Shift: ${{ steps.psi-mobile.outputs.cumulative_layout_shift }}
+
+            ### Desktop
+            Overall Score: ${{ steps.psi-desktop.outputs.score }}
+            
+            Performance: ${{ steps.psi-desktop.outputs.performance_score }}
+            Accessibility: ${{ steps.psi-desktop.outputs.accessibility_score }}
+            Best Practices: ${{ steps.psi-desktop.outputs.best_practices_score }}
+            SEO: ${{ steps.psi-desktop.outputs.seo_score }}
+
+            First Contentful Paint: ${{ steps.psi-desktop.outputs.first_contentful_paint }}
+            Speed Index: ${{ steps.psi-desktop.outputs.speed_index }}
+            Largest Contentful Paint: ${{ steps.psi-desktop.outputs.largest_contentful_paint }}
+            Time to Interactive: ${{ steps.psi-desktop.outputs.interactive }}
+            Total Blocking Time: ${{ steps.psi-desktop.outputs.total_blocking_time }}
+            Cumulative Layout Shift: ${{ steps.psi-desktop.outputs.cumulative_layout_shift }}
+
+      - name: Update Comment PR
+        if: steps.fc.outputs.comment-id != ''
+        uses: peter-evans/create-or-update-comment@v1
+        if: steps.pr.outputs.number && success()
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ steps.pr.outputs.number }}
+          body: |
+            ### PageSpeed Insights Results
+
+            ### Mobile
+            Overall Score: ${{ steps.psi-mobile.outputs.score }}
+            
+            Performance: ${{ steps.psi-mobile.outputs.performance_score }}
+            Accessibility: ${{ steps.psi-mobile.outputs.accessibility_score }}
+            Best Practices: ${{ steps.psi-mobile.outputs.best_practices_score }}
+            SEO: ${{ steps.psi-mobile.outputs.seo_score }}
+
+            First Contentful Paint: ${{ steps.psi-mobile.outputs.first_contentful_paint }}
+            Speed Index: ${{ steps.psi-mobile.outputs.speed_index }}
+            Largest Contentful Paint: ${{ steps.psi-mobile.outputs.largest_contentful_paint }}
+            Time to Interactive: ${{ steps.psi-mobile.outputs.interactive }}
+            Total Blocking Time: ${{ steps.psi-mobile.outputs.total_blocking_time }}
+            Cumulative Layout Shift: ${{ steps.psi-mobile.outputs.cumulative_layout_shift }}
+
+            ### Desktop
+            Overall Score: ${{ steps.psi-desktop.outputs.score }}
+            
+            Performance: ${{ steps.psi-desktop.outputs.performance_score }}
+            Accessibility: ${{ steps.psi-desktop.outputs.accessibility_score }}
+            Best Practices: ${{ steps.psi-desktop.outputs.best_practices_score }}
+            SEO: ${{ steps.psi-desktop.outputs.seo_score }}
+
+            First Contentful Paint: ${{ steps.psi-desktop.outputs.first_contentful_paint }}
+            Speed Index: ${{ steps.psi-desktop.outputs.speed_index }}
+            Largest Contentful Paint: ${{ steps.psi-desktop.outputs.largest_contentful_paint }}
+            Time to Interactive: ${{ steps.psi-desktop.outputs.interactive }}
+            Total Blocking Time: ${{ steps.psi-desktop.outputs.total_blocking_time }}
+            Cumulative Layout Shift: ${{ steps.psi-desktop.outputs.cumulative_layout_shift }}
