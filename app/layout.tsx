@@ -1,7 +1,7 @@
 import "./global.css";
 import clsx from "clsx";
 import type { Metadata } from "next";
-import { GeistSans, GeistMono } from "geist/font";
+import { Geist } from "next/font/google";
 import React from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { OpenpanelProvider } from '@openpanel/nextjs';
@@ -38,6 +38,12 @@ export const metadata: Metadata = {
   },
 };
 
+const geist = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist-sans",
+  display: "swap",
+});
+
 export default function RootLayout({
   children,
 }: {
@@ -47,9 +53,8 @@ export default function RootLayout({
     <html
       lang="en"
       className={clsx(
-        "text-black bg-white dark:text-white dark:bg-[#111010]",
-        GeistSans.variable,
-        GeistMono.variable
+        "text-black bg-white dark:text-white dark:bg-[#111010] font-sans",
+        geist.className,
       )}
     >
       <body className="antialiased max-w-2xl mb-40 flex flex-col md:flex-row mx-4 mt-8 lg:mx-auto">
