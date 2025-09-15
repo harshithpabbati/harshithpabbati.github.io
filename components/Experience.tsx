@@ -2,51 +2,38 @@ import { Role } from "./Role";
 
 const experience = [
   {
+    title: "Software Engineer",
+    company: {
+      name: "Aragon.ai",
+      url: "https://aragon.ai",
+    },
+    fromDate: "Jun 2024",
+    toDate: "Jul 2025",
+    bullets: [
+      "Led the development of cross-platform React Native application for Aragon.ai, delivering a comprehensive mobile platform with AI-driven headshot generation, advanced image editing tools, and user-friendly interface design.",
+      "Optimized core web vitals and page performance metrics by 50%, improving user experience and SEO rankings through implementation of performance optimization techniques including code splitting, lazy loading, and caching strategies.",
+      "Spearheaded a comprehensive strategic data-driven redesign of five high-converting landing pages, incorporating A/B testing; achieved a 20% increase in conversion rates within the first quarter, directly boosting user acquisition.",
+      "Revamped the user onboarding process by streamlining the back-end infrastructure and optimizing database queries, resulting in reducing average page load times by 60% and improving user satisfaction scores by 35%.",
+      "Built comprehensive analytics dashboard for subscription and product KPIs, enabling real-time monitoring and data-driven decision making for business metrics, resulting in improved operational efficiency and strategic planning.",
+    ],
+  },
+  {
     title: "Solutions Engineer",
     company: {
-      name: "Daily",
+      name: "Daily.co",
       url: "https://daily.co",
     },
     fromDate: "Nov 2021",
-    toDate: "Present",
+    toDate: "May 2024",
     bullets: [
-      "Developed an internal tool with AI capabilities for meeting management, featuring automated transcription and intent-based summarization, enhancing team productivity and collaboration.",
-      "Led Proof of Concept (PoC) demonstrations, effectively illustrating the value of our solutions to prospective customers, leading to successful customer acquisition and engagement.",
-      "Provided expert-level technical support, resolving customer inquiries and challenges, and ensuring seamless integration of our products.",
-      "Demonstrated proficiency in solution architecture and AI integration, contributing to the development of innovative technical solutions.",
-      "Collaborated with a cross-functional team to build a test bench application for daily comparisons with competitors, facilitating data-driven decision-making and competitive analysis.",
+      "Pioneered the first comprehensive developer-facing showcase for Daily's Interactive Live Streaming APIs using React/Next.js, creating reusable demo applications that directly accelerated customer product launches.",
+      "Developed internal meetings tool with Daily's APIs featuring AI summaries, sentiment analysis, and talk-time metrics. The tool became indispensable in customer-facing teams with 1500+ meetings hosted as serves as flagship example.",
+      "Spearheaded expert-level technical support and led tailored Proof-of-Concept (PoC) demonstrations to showcase Daily's API capabilities across diverse use cases, directly contributing to customer acquisition and sustained engagement.",
+      "Collaborated on building a comprehensive test bench application to compare Daily's performance against key competitors, enabling data-driven decision-making processes and optimization strategies.",
     ],
   },
   {
-    title: "Frontend Engineer",
-    company: {
-      name: "Whitebrick",
-      url: "https://whitebrick.com/",
-    },
-    fromDate: "May 2021",
-    toDate: "Nov 2021",
-    bullets: [
-      "I played a pivotal role in designing and developing various components of our web applications, ensuring they met high-quality standards and user expectations.",
-      "I specialized in creating and optimizing landing page sections to enhance the user experience and engagement on our websites.",
-      "I successfully integrated our applications with the backend systems, enabling smooth data flow and functionality for our users.",
-    ],
-  },
-  {
-    title: "Fullstack Developer",
-    company: {
-      name: "Tayfa",
-      url: "https://usetayfa.com/",
-    },
-    fromDate: "Nov 2020",
-    toDate: "Dec 2020",
-    bullets: [
-      "I took charge of designing and developing various layouts and components for web pages, ensuring an engaging and user-friendly interface.",
-      "I played a crucial role in developing APIs, facilitating seamless data exchange and integration between our web applications and backend systems.",
-      "I successfully implemented a version history feature for the layouts, allowing for better management and tracking of changes for customers",
-    ],
-  },
-  {
-    title: "Student Developer",
+    title: "Student Developer (LFX Mentorship Program)",
     company: {
       name: "GraphQL Foundation",
       url: "https://graphql.org/",
@@ -54,8 +41,8 @@ const experience = [
     fromDate: "Jul 2020",
     toDate: "Oct 2020",
     bullets: [
-      "I was working on expanding the capabilities of GraphiQL by adding support for a plugin system. This enhancement allowed for greater customization and extensibility, making GraphiQL a more versatile tool.",
-      "In response to a newly redesigned layout, I developed and integrated new React components. These components seamlessly blended with the updated design, enhancing the overall user experience and functionality of our applications.",
+      "Collaborated on expanding the capabilities of GraphiQL by introducing a plugin system. This enhancement allowed for greater customization, extensibility and GraphiQL enhancement, improving the developer experience.",
+      "Implemented a redesigned layout by building custom React components to enhance user interface functionality.",
     ],
   },
 ];

@@ -7,7 +7,7 @@ export function Intro() {
         Hi, I am Harshith Pabbati
       </h1>
       <p className="prose prose-neutral dark:prose-invert">
-        Solutions Engineer at <a href="https://daily.co">Daily</a>
+        MS in Computer Science at <a href="https://stonybrook.edu">Stony Brook University</a>
       </p>
       <Links />
 
