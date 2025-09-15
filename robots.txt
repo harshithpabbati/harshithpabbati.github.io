@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://harshithpabbati.com/sitemap.xml
-Host: https://harshithpabbati.com
