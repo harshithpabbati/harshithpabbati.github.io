@@ -2,28 +2,25 @@
   "name": "harshithpabbati.github.io",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint .",
-    "dev:vinext": "vite dev --port 3001",
-    "build:vinext": "vite build"
+    "dev": "vinext dev",
+    "build": "vinext build",
+    "start": "vinext start",
+    "lint": "vinext lint",
+    "deploy": "vinext deploy"
   },
   "dependencies": {
-    "@openpanel/nextjs": "0.0.10-beta",
-    "@vercel/analytics": "^1.1.1",
-    "@vercel/speed-insights": "^1.1.0",
     "clsx": "^2.0.0",
-    "next": "16.0.7",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "next": "^16.1.6",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.25.5",
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.38.0",
     "@next/eslint-plugin-next": "^16.0.1",
     "@tailwindcss/typography": "^0.5.10",
-    "@types/node": "20.8.9",
+    "@types/node": "^25.3.0",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
     "@vitejs/plugin-rsc": "^0.5.20",
@@ -35,7 +32,8 @@
     "tailwindcss": "^3.3.5",
     "typescript": "5.2.2",
     "vinext": "^0.0.5",
-    "vite": "^7.3.1"
+    "vite": "^7.3.1",
+    "wrangler": "^4.68.1"
   },
   "type": "module"
 }
