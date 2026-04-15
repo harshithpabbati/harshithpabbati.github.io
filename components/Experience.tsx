@@ -18,7 +18,7 @@ const experience = [
     ],
   },
   {
-    title: "Solutions Engineer",
+    title: "Software Engineer",
     company: {
       name: "Daily.co",
       url: "https://daily.co",
