@@ -1,6 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
 
 ::selection {
   background-color: #47a3f3;
@@ -39,7 +43,7 @@ html {
 }
 
 .prose pre {
-  @apply border border-neutral-800 !bg-neutral-900;
+  @apply border border-neutral-800 bg-neutral-900!;
 }
 
 .prose code {
