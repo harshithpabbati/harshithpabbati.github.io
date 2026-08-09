@@ -40,3 +40,9 @@ next-env.d.ts
 .contentlayer
 
 dist
+
+# vinext
+.vinext/
+
+# cloudflare
+.wrangler/
