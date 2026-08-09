@@ -7,13 +7,15 @@ import React from 'react';
 export const metadata: Metadata = {
   metadataBase: new URL("https://harshithpabbati.com"),
   title: {
-    default: "Harshith Pabbati",
-    template: "%s | Harshith Pabbati",
+    default: "Harshith Pabbati · Software Engineer",
+    template: "%s · Harshith Pabbati",
   },
-  description: "Full Stack Developer",
+  description:
+    "Software engineer working on realtime systems, WebRTC, distributed systems, and full-stack products.",
   openGraph: {
-    title: "Harshith Pabbati",
-    description: "Full Stack Developer",
+    title: "Harshith Pabbati · Software Engineer",
+    description:
+      "Software engineer working on realtime systems, WebRTC, distributed systems, and full-stack products.",
     url: "https://harshithpabbati.com",
     siteName: "Harshith Pabbati",
     locale: "en_US",
@@ -31,7 +33,9 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: "Harshith Pabbati",
+    title: "Harshith Pabbati · Software Engineer",
+    description:
+      "Software engineer working on realtime systems, WebRTC, distributed systems, and full-stack products.",
     card: "summary_large_image",
   },
 };

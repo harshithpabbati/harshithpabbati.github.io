@@ -25,9 +25,9 @@ const links = [
 
 export function Links() {
   return (
-    <section className="prose prose-neutral dark:prose-invert items-center flex gap-2">
+    <section className="flex gap-2 mt-1">
       {links.map((link) => (
-        <Link target="_blank" key={link.name} href={link.url}>
+        <Link target="_blank" key={link.name} href={link.url} className="underline">
           {link.name}
         </Link>
       ))}

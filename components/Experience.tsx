@@ -2,6 +2,25 @@ import { Role } from "./Role";
 
 const experience = [
   {
+    title: "Software Engineer Intern, Realtime",
+    company: {
+      name: "Cloudflare",
+      url: "https://cloudflare.com",
+    },
+    fromDate: "2026",
+    description:
+      "Worked on the Realtime team's SFU, primarily around WebRTC DataChannels and the SCTP stack.",
+    bullets: [
+      "Added native SCTP routing between SFUs, enabling reliable-ordered, reliable-unordered, and unreliable-unordered DataChannel delivery end to end.",
+      "Built fragment passthrough through pion/sctp, avoiding message reassembly at intermediate SFUs. Testing showed 29% higher median throughput, 17.6% lower jitter, and 11.3% lower p99 RTT.",
+      "Added bidirectional DataChannels, allowing subscribers to reply to publishers over the same channel and enabling patterns like AI agents, remote control, and tool calls.",
+    ],
+    link: {
+      label: "Read the case study →",
+      href: "/work/cloudflare-sfu",
+    },
+  },
+  {
     title: "Software Engineer",
     company: {
       name: "Aragon.ai",
@@ -9,12 +28,12 @@ const experience = [
     },
     fromDate: "Jun 2024",
     toDate: "Jul 2025",
+    description:
+      "Worked across Aragon's web and mobile products for AI-powered headshot generation and image editing.",
     bullets: [
-      "Led the development of cross-platform React Native application for Aragon.ai, delivering a comprehensive mobile platform with AI-driven headshot generation, advanced image editing tools, and user-friendly interface design.",
-      "Optimized core web vitals and page performance metrics by 50%, improving user experience and SEO rankings through implementation of performance optimization techniques including code splitting, lazy loading, and caching strategies.",
-      "Spearheaded a comprehensive strategic data-driven redesign of five high-converting landing pages, incorporating A/B testing; achieved a 20% increase in conversion rates within the first quarter, directly boosting user acquisition.",
-      "Revamped the user onboarding process by streamlining the back-end infrastructure and optimizing database queries, resulting in reducing average page load times by 60% and improving user satisfaction scores by 35%.",
-      "Built comprehensive analytics dashboard for subscription and product KPIs, enabling real-time monitoring and data-driven decision making for business metrics, resulting in improved operational efficiency and strategic planning.",
+      "Led development of a cross-platform React Native application, bringing Aragon's AI image generation and editing workflows to mobile.",
+      "Improved web performance by 50%, reducing LCP from 20s to 2.1s, FCP from 4s to 0.4s, and CLS from 0.20 to 0.03 through code splitting, lazy loading, and caching.",
+      "Redesigned five high-converting landing pages using A/B testing, increasing conversion rates by 20%.",
     ],
   },
   {
@@ -25,24 +44,12 @@ const experience = [
     },
     fromDate: "Nov 2021",
     toDate: "May 2024",
+    description:
+      "Worked on Daily's realtime video platform, building WebRTC applications, developer tooling, and customer integrations.",
     bullets: [
-      "Pioneered the first comprehensive developer-facing showcase for Daily's Interactive Live Streaming APIs using React/Next.js, creating reusable demo applications that directly accelerated customer product launches.",
-      "Developed internal meetings tool with Daily's APIs featuring AI summaries, sentiment analysis, and talk-time metrics. The tool became indispensable in customer-facing teams with 1500+ meetings hosted as serves as flagship example.",
-      "Spearheaded expert-level technical support and led tailored Proof-of-Concept (PoC) demonstrations to showcase Daily's API capabilities across diverse use cases, directly contributing to customer acquisition and sustained engagement.",
-      "Collaborated on building a comprehensive test bench application to compare Daily's performance against key competitors, enabling data-driven decision-making processes and optimization strategies.",
-    ],
-  },
-  {
-    title: "Student Developer (LFX Mentorship Program)",
-    company: {
-      name: "GraphQL Foundation",
-      url: "https://graphql.org/",
-    },
-    fromDate: "Jul 2020",
-    toDate: "Oct 2020",
-    bullets: [
-      "Collaborated on expanding the capabilities of GraphiQL by introducing a plugin system. This enhancement allowed for greater customization, extensibility and GraphiQL enhancement, improving the developer experience.",
-      "Implemented a redesigned layout by building custom React components to enhance user interface functionality.",
+      "Built developer-facing demos for Daily's Interactive Live Streaming APIs using React and Next.js, giving customers production-like examples for integrating realtime video.",
+      "Built an internal meeting intelligence tool with AI summaries, sentiment analysis, and talk-time metrics. The tool was used across 1,500+ meetings and became a flagship example for customer-facing teams.",
+      "Worked directly with customers on WebRTC integrations and Proof-of-Concepts, helping debug difficult realtime problems and feeding API and developer-experience issues back into the product team.",
     ],
   },
 ];
@@ -50,8 +57,8 @@ const experience = [
 export function Experience() {
   return (
     <section className="mt-8">
-      <h1 className="font-semibold text-2xl tracking-tighter">Experience</h1>
-      <div className="prose prose-neutral dark:prose-invert">
+      <h2 className="font-semibold text-2xl tracking-tighter mb-0">Experience</h2>
+      <div className="prose prose-neutral dark:prose-invert mt-0">
         {experience.map((role) => (
           <Role key={role.title} {...role} />
         ))}
